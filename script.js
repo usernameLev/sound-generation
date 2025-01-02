@@ -2,6 +2,9 @@ const sound = document.getElementById('sound');
 let intervalId; // Переменная для хранения идентификатора таймера
 
 document.getElementById('startButton').addEventListener('click', function () {
+  // Блокируем кнопку "Начать бой!"
+  this.disabled = true;
+
   // Функция для генерации случайного времени
   function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -19,4 +22,7 @@ document.getElementById('startButton').addEventListener('click', function () {
 
 document.getElementById('stopButton').addEventListener('click', function () {
   clearTimeout(intervalId); // Остановка генерации звуков
+  
+  // Разблокируем кнопку "Начать бой!"
+  document.getElementById('startButton').disabled = false;
 });
